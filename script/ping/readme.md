@@ -1,10 +1,9 @@
-根据网络延迟生成  类GiF 柱状图 面板
+根据网络延迟生成 类 GiF 柱状图 面板 
 
+- [ping](https://raw.githubusercontent.com/Keywos/rule/main/script/ping/ping.sgmodule) 为二合一版本
 
-* [ping](https://raw.githubusercontent.com/Keywos/rule/main/script/ping/ping.sgmodule) 为二合一版本
-# ![ping](img/pingt.jpg)
+  <img src="img/pingt.jpg" alt="替代文本" width="300px" />
 
-* [ping_gif](https://raw.githubusercontent.com/Keywos/rule/main/script/ping/ping_gif.sgmodule) 为单独两个面板版本
-# ![ping_gif](img/ping_gif.jpg)
+- [ping_gif](https://raw.githubusercontent.com/Keywos/rule/main/script/ping/ping_gif.sgmodule) 为单独两个面板版本
 
-
+  <img src="img/ping_gif.jpg" alt="替代文本" width="300px" />
