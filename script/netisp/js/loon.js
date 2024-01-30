@@ -103,6 +103,7 @@ const scriptName = "入口落地查询";
             tk = SP.tk;
           hideIP && (nodeIp = HIP(nodeIp));
           city == district && (city = "");
+          city == province && (city = "");
           countryCode !== "CN" && (cfw = `⟦\x20\u9632\u706b\u5899\x20⟧`);
           ins = `<b><font>入口ISP</font>:</b>
         <font>${isp}</font><br><br>
