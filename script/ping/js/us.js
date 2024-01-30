@@ -1,10 +1,10 @@
 // @timestamp thenkey 2023-11-22 22:35:05
 
-let size = 17,
+let size = 18,
   t = "http://cp.cloudflare.com/generate_204";
 if (typeof $argument !== "undefined" && $argument !== "") {
   const ins = getin("$argument");
-  size = ins.usSize || size;
+  size = ins.Size || size;
   t = ins.usUrl || t;
 }
 
@@ -19,7 +19,7 @@ function e() {
 }
 function n(t) {
   const e = $persistentStore.read("KEY_CFs"),
-    n = (e ? JSON.parse(e) : o(1, size)).concat(t).slice(-(size + 1));
+    n = (e ? JSON.parse(e) : o(1, size)).concat(t).slice(-size);
   return $persistentStore.write(JSON.stringify(n), "KEY_CFs"), n;
 }
 function r(t) {

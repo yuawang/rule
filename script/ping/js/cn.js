@@ -1,10 +1,10 @@
 // @timestamp thenkey 2023-11-22 22:34:40
 
-let size = 17,
+let size = 18,
   t = "http://connectivitycheck.platform.hicloud.com/generate_204";
 if (typeof $argument !== "undefined" && $argument !== "") {
   const ins = getin("$argument");
-  size = ins.cnSize || size;
+  size = ins.Size || size;
   t = ins.cnUrl || t;
 }
 
@@ -19,7 +19,7 @@ function n() {
 }
 function e(t) {
   const n = $persistentStore.read("KEY_CNs"),
-    e = (n ? JSON.parse(n) : o(1, size)).concat(t).slice(-(size + 1));
+    e = (n ? JSON.parse(n) : o(1, size)).concat(t).slice(-size);
   return $persistentStore.write(JSON.stringify(e), "KEY_CNs"), e;
 }
 function r(t) {
