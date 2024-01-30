@@ -1,0 +1,13 @@
+#!name=Ping Gif 面板
+#!desc=屏幕6.1寸机型以上 生成柱状图,持久化缓存数据,每次刷新自动叠加,感谢小一的点子
+#!system=ios
+#!category= Key
+#!arguments= script-update:-1 ,update-interval: 1, cnSize:17, cnUrl: , usSize:17, usUrl: ,
+
+[Script]
+CNPing = type=generic,timeout=5,script-path=https://raw.githubusercontent.com/Keywos/rule/main/script/ping/js/cn.js , script-update-interval={{{script-update}}},argument=cnSize={{{cnSize}}}&cnUrl={{{cnUrl}}}
+USPing = type=generic,timeout=5,script-path=https://raw.githubusercontent.com/Keywos/rule/main/script/ping/js/us.js , script-update-interval={{{script-update}}},argument=usSize={{{usSize}}}&usUrl={{{usUrl}}}
+
+[Panel]
+CNPing = script-name=CNPing,update-interval={{{update-interval}}}
+USPing = script-name=USPing,update-interval={{{update-interval}}}
