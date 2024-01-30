@@ -11,7 +11,7 @@ http:
 
   script:
 
-    - match: ^https?:\/\/neteasems\.test(\/)?$
+    - match: ^https?:\/\/neteasems\.test
       name: "加解密耗时"
       type: request
       require-body: true
