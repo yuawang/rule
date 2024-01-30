@@ -18,7 +18,7 @@ if (typeof $argument !== "undefined" && $argument !== "") {
 //   });
 // }
 
-async function n(url) {
+async function e(url) {
     return new Promise((resolve, reject) => {
       let e = Date.now();
       const timeoutPromise = new Promise((_, reject) => {
