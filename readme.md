@@ -8,7 +8,7 @@
 * [rename.js](https://raw.githubusercontent.com/Keywos/rule/main/rename.js)
 
 
-#### 以下两个脚本 仅支持 `Loon`、 `Surge`  联网
+#### 以下两个脚本 仅支持 `Loon`、 `Surge`  需联网
  Surge 必须使用带 有参数 [ability=http-client-policy] 的模块
 * [cname.js](https://raw.githubusercontent.com/Keywos/rule/main/cname.js)
 
