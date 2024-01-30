@@ -1,7 +1,7 @@
 // key
 let cnurl = "http://connectivitycheck.platform.hicloud.com/generate_204",
   cfurl = "http://cp.cloudflare.com/generate_204";
-let num = "7",
+let num = 7,
   icons = "barometer",
   icolor = "#80A0BF",
   repin = 0;

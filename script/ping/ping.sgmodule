@@ -8,7 +8,7 @@
 
 [Script]
 # 如果一行放不下了可以把参数 num=7 改成6或者更小
-ProPing = type=generic,timeout=6,script-path=https://raw.githubusercontent.com/Keywos/rule/main/script/ping/js/pingt.js, script-update-interval={{{script-update}}},argument=Size={{{Size}}}&cnUrl={{{cnUrl}}}&icons={{{icons}}}&icolor={{{icolor}}}
+ProPing = type=generic,timeout=6,script-path=https://raw.githubusercontent.com/Keywos/rule/main/script/ping/js/pingt.js, script-update-interval={{{script-update}}},argument=Size={{{Size}}}&cnUrl={{{cnUrl}}}&usUrl={{{usUrl}}}&icons={{{icons}}}&icolor={{{icolor}}}
 
 [Panel]
 ProPing = script-name=ProPing,update-interval={{{update-interval}}}
