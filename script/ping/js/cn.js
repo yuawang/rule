@@ -19,28 +19,27 @@ if (typeof $argument !== "undefined" && $argument !== "") {
 // }
 
 async function n(url) {
-    return new Promise((resolve, reject) => {
-      let e = Date.now();
-      const timeoutPromise = new Promise((_, reject) => {
-        setTimeout(() => {
-          repin++;
-          reject("");
-          resolve("2e3");
-        }, 1900);
-      });
-      const reqPromise = new Promise((resolve) => {
-        $httpClient.get(url, resolve);
-      });
-      Promise.race([reqPromise, timeoutPromise])
-        .then((i) => {
-          resolve(Date.now() - e);
-        })
-        .catch((error) => {
-          reject(error);
-          resolve("1e4");
-        });
+  return new Promise((resolve, reject) => {
+    let e = Date.now();
+    const timeoutPromise = new Promise((_, reject) => {
+      setTimeout(() => {
+        reject("");
+        resolve("2e3");
+      }, 1900);
     });
-  }
+    const reqPromise = new Promise((resolve) => {
+      $httpClient.get(url, resolve);
+    });
+    Promise.race([reqPromise, timeoutPromise])
+      .then((i) => {
+        resolve(Date.now() - e);
+      })
+      .catch((error) => {
+        reject(error);
+        resolve("1e4");
+      });
+  });
+}
 
 function e(t) {
   const n = $persistentStore.read("KEY_CNs"),

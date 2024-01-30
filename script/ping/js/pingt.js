@@ -1,30 +1,24 @@
-/*
-#!name=Ping CN CF 二合一面板
-#!desc=根据网络延迟生成柱状图
-#!system=ios
-
-[Script]
-# 如果一行放不下了可以把参数 num=7 改成6或者更小
-ProPing = type=generic,timeout=6,script-path=https://raw.githubusercontent.com/Keywos/rule/main/JS/ProPing.js,argument=color=#80A0BF&icon=barometer&num=7
-
-[Panel]
-ProPing = script-name=ProPing,update-interval=120
-*/
-const cnurl = "http://connectivitycheck.platform.hicloud.com/generate_204";
-const cfurl = "http://cp.cloudflare.com/generate_204";
+// key
+let cnurl = "http://connectivitycheck.platform.hicloud.com/generate_204",
+  cfurl = "http://cp.cloudflare.com/generate_204";
 let num = "7",
   icons = "barometer",
   icolor = "#80A0BF",
   repin = 0;
 if (typeof $argument !== "undefined" && $argument !== "") {
   const ins = getin("$argument");
-  num = ins.num || num;
-  icons = ins.icon || icons;
-  icolor = ins.color || icolor;
+  num = ins.Size || num;
+  icons = ins.icons || icons;
+  icolor = ins.icolor || icolor;
+  cnurl = ins.cnUrl || cnurl;
+  cfurl = ins.usUrl || cfurl;
 }
 (async () => {
   try {
-    let cn = [], cf = [], d, e;
+    let cn = [],
+      cf = [],
+      d,
+      e;
     while (repin < 2) {
       const u = await http(cnurl);
       const k = parseFloat(u);
@@ -35,13 +29,13 @@ if (typeof $argument !== "undefined" && $argument !== "") {
       cf.push(n);
       repin++;
     }
-	if ( repin === 2 ){
-		d = Math.floor((cn[0] + cn[1]) / 2);
-		e = Math.floor((cf[0] + cf[1]) / 2);
-	} else {
-		d = cn[0];
-		e = cf[0];
-	}
+    if (repin === 2) {
+      d = Math.floor((cn[0] + cn[1]) / 2);
+      e = Math.floor((cf[0] + cf[1]) / 2);
+    } else {
+      d = cn[0];
+      e = cf[0];
+    }
     const n = saK(d, e);
     const od = ptoG(n["CN"]);
     const op = ptoG(n["CF"]);

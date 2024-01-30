@@ -8,15 +8,40 @@ if (typeof $argument !== "undefined" && $argument !== "") {
   t = ins.usUrl || t;
 }
 
-function e() {
-  return new Promise((e) => {
-    let n = Date.now();
-    $httpClient.get(t, () => {
-      let t = Date.now();
-      e(t - n);
+// function e() {
+//   return new Promise((e) => {
+//     let n = Date.now();
+//     $httpClient.get(t, () => {
+//       let t = Date.now();
+//       e(t - n);
+//     });
+//   });
+// }
+
+async function n(url) {
+    return new Promise((resolve, reject) => {
+      let e = Date.now();
+      const timeoutPromise = new Promise((_, reject) => {
+        setTimeout(() => {
+          reject("");
+          resolve("2e3");
+        }, 1900);
+      });
+      const reqPromise = new Promise((resolve) => {
+        $httpClient.get(url, resolve);
+      });
+      Promise.race([reqPromise, timeoutPromise])
+        .then((i) => {
+          resolve(Date.now() - e);
+        })
+        .catch((error) => {
+          reject(error);
+          resolve("1e4");
+        });
     });
-  });
-}
+  }
+
+  
 function n(t) {
   const e = $persistentStore.read("KEY_CFs"),
     n = (e ? JSON.parse(e) : o(1, size)).concat(t).slice(-size);
