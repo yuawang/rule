@@ -58,11 +58,11 @@ try {
       body: JSON.stringify(
         {
           TS: Date.now(),
-          压力: $,
           STS: T,
           设备: ios,
           长度: length,
           耗时: Date.now() - T + "ms",
+          压力: $,
         },
         null,
         3
@@ -76,11 +76,11 @@ try {
         body: JSON.stringify(
           {
             TS: Date.now(),
-            压力: $,
             STS: T,
             设备: ios,
             长度: length,
             耗时: Date.now() - T + "ms",
+            压力: $,
           },
           null,
           3
