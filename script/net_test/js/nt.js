@@ -30,6 +30,13 @@ try {
   } else if (ios == "Surge") {
     ios = $environment
     ios['app'] = "Surge"
+  } else if (ios == "Stash") {
+    ios = {
+      system: $environment.system,
+      "surge-build": $environment["stash-build"],
+      "surge-version": $environment["stash-version"],
+      app: "Stash"
+    }
   }
 
   const headers = {
