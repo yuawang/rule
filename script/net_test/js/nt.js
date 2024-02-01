@@ -33,8 +33,8 @@ try {
   } else if (ios == "Stash") {
     ios = {
       system: $environment.system,
-      "surge-build": $environment["stash-build"],
-      "surge-version": $environment["stash-version"],
+      "stash-build": $environment["stash-build"],
+      "stash-version": $environment["stash-version"],
       app: "Stash"
     }
   }
