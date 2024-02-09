@@ -2,7 +2,7 @@
  * 更新日期：2024-01-13 17:24:40
  * 用法：Sub-Store 脚本操作添加
  * rename.js 以下是此脚本支持的参数，必须以 # 为开头多个参数使用"&"连接，参考上述地址为例使用参数。 禁用缓存url#noCache
- * 
+ *
  *** 主要参数
  * [in=] 自动判断机场节点名类型 优先级 zh(中文) -> flag(国旗) -> quan(英文全称) -> en(英文简写)
  * 如果不准的情况, 可以加参数指定:
@@ -36,7 +36,7 @@
  * [blockquic] blockquic=on 阻止; blockquic=off 不阻止
  */
 
-// const inArg = { 'bl':true, 'blgd':true, 'blkey':'iplc+gpt+NF+IPLC', 'flag':true };
+// const inArg = {'blkey':'iplc+GPT>GPTnewName+NF+IPLC', 'flag':true };
 const inArg = $arguments; // console.log(inArg)
 const nx = inArg.nx || false,
   bl = inArg.bl || false,
@@ -129,6 +129,7 @@ const rurekey = {
   G: /\d\s?GB/gi,
   Esnc: /esnc/gi,
 };
+
 function operator(pro) {
   const Allmap = {};
   const outList = getList(outputName);
@@ -158,6 +159,8 @@ function operator(pro) {
     });
   }
 
+  const BLKEYS = BLKEY ? BLKEY.split("+") : "";
+
   pro.forEach((e) => {
     // 预处理 防止预判或遗漏
     Object.keys(rurekey).forEach((ikey) => {
@@ -176,8 +179,19 @@ function operator(pro) {
 
     // 自定义
     if (BLKEY) {
-      const BLKEYS = BLKEY.split("+");
-      retainKey = BLKEYS.filter((items) => e.name.includes(items));
+      let BLKEY_REPLACE = "",
+        re = false;
+      BLKEYS.forEach((i) => {
+        if (i.includes(">") && e.name.includes(i.split(">")[0])) {
+          if (i.split(">")[1]) {
+            BLKEY_REPLACE = i.split(">")[1];
+            re = true;
+          }
+        }
+      });
+      retainKey = re
+        ? BLKEY_REPLACE
+        : BLKEYS.filter((items) => e.name.includes(items));
     }
 
     let ikey = "",
