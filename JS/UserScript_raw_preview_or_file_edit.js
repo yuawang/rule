@@ -9,87 +9,92 @@
 // @match        http://script.hub/file/*
 // @match        https://script.hub/convert/*
 // @match        http://script.hub/convert/*
+// @match        http://127.0.0.1:9101/file/*
+// @match        http://127.0.0.1:9101/convert/*
 // ==/UserScript==
-
 (function () {
-    "use strict";
-    setTimeout(function () {
-      const isBlobPage = window.location.pathname.includes("/blob/");
-      const isSH = /\/(file|convert)\//.test(window.location.pathname);
-      if (
-        document.readyState === "complete" ||
-        document.readyState !== "loading"
-      ) {
-        isBlobPage && init();
-        isSH && inits();
-      }
-  
-      function init() {
-        const rawButton = createButton("打开 Raw", openRawLink);
-        document.body.appendChild(rawButton);
-        const scriptHubButton = createButton("打开 ScriptHub", openScriptHubLink);
-        document.body.appendChild(scriptHubButton);
-      }
-  
-      function inits() {
-        const scriptHubEdit = createButton("打开 Script-Hub 编辑", reEditLink);
-        document.body.appendChild(scriptHubEdit);
-      }
-  
-      function createButton(text, clickHandler) {
-        const button = document.createElement("button");
-        button.innerHTML = text;
-        button.style.position = "fixed";
-        button.style.backgroundColor = "#303033ab";
-        button.style.color = "#eeeeee";
-        button.style.border = "none";
-        button.style.padding = "8px 16px";
-        button.style.borderRadius = "16px";
-        button.style.cursor = "pointer";
-  
-        // 将 Raw 按钮放在右侧
-        if (text === "打开 Raw") {
-          button.style.right = "20px";
-          button.style.bottom = "50px";
-        }
-  
-        // 将 ScriptHub 按钮放在左侧
-        if (text === "打开 ScriptHub") {
-          button.style.left = "20px";
-          button.style.bottom = "50px";
-        }
-  
-        if (text === "打开 Script-Hub 编辑") {
-          button.style.right = "20px";
-          button.style.bottom = "50px";
-        }
-  
-        button.addEventListener("click", clickHandler);
-        return button;
-      }
-  
-      function openRawLink() {
-        // 提取 raw
-        const rawUrl = window.location.href
-          .replace("/blob", "")
-          .replace("github.com", "raw.githubusercontent.com");
-        window.open(rawUrl, "_blank");
-      }
-  
-      function reEditLink() {
-        // 转换 edit
-        const Url = window.location.href.replace(/\/(convert|file)\//, "/edit/");
-        window.open(Url, "_blank");
-      }
-  
-      function openScriptHubLink() {
-        const rawUrl = window.location.href
-          .replace("/blob", "")
-          .replace("github.com", "raw.githubusercontent.com");
-        // 生成 ScriptHub 链接
-        const scriptHubUrl = `http://script.hub/convert/_start_/${rawUrl}/_end_/plain.txt?type=plain-text&target=plain-text`;
-        window.open(scriptHubUrl, "_blank");
-      }
-    }, 600);
-  })();
-  
+  "use strict";
+  /\/blob\//.test(window.location.pathname) && init();
+  /\/(file|convert)\//.test(window.location.pathname) && initeh();
+
+  function init() {
+    const rawButton = createButton("打开 Raw", openRawLink);
+    document.body.appendChild(rawButton);
+
+    const rawViewButton = createButton("打开 Code Hub", openRawHiLink);
+    document.body.appendChild(rawViewButton);
+
+    const scriptHubButton = createButton("打开 ScriptHub", openScriptHubLink);
+    document.body.appendChild(scriptHubButton);
+  }
+
+  function initeh() {
+    const scriptHubEdit = createButton("打开 Script-Hub 编辑", reEditLink);
+    document.body.appendChild(scriptHubEdit);
+  }
+
+  function createButton(text, clickHandler) {
+    const button = document.createElement("button");
+    const buttonStyle = {
+      position: "fixed",
+      backgroundColor: "#303033ab",
+      color: "#eeeeee",
+      border: "none",
+      padding: "4px 12px",
+      borderRadius: "14px",
+      cursor: "pointer",
+      fontSize: "10px",
+    };
+    button.innerHTML = text;
+    Object.assign(button.style, buttonStyle);
+
+    if (text === "打开 Raw") {
+      button.style.right = "10px";
+      button.style.bottom = "80px";
+    }
+
+    if (text === "打开 Code Hub") {
+      button.style.right = "10px";
+      button.style.bottom = "50px";
+    }
+
+    if (text === "打开 ScriptHub") {
+      button.style.left = "10px";
+      button.style.bottom = "50px";
+    }
+
+    if (text === "打开 Script-Hub 编辑") {
+      button.style.right = "10px";
+      button.style.bottom = "50px";
+    }
+
+    button.addEventListener("click", clickHandler);
+    return button;
+  }
+
+  function getRawUrl() {
+    return window.location.href
+      .replace("/blob", "")
+      .replace("github.com", "raw.githubusercontent.com");
+  }
+
+  function openRawLink() {
+    window.open(getRawUrl(), "_blank");
+  }
+
+  function openRawHiLink() {
+    const Url =
+      "https://app.linkey.store/EditCode?" + encodeURIComponent(getRawUrl());
+    window.open(Url, "_blank");
+  }
+
+  function reEditLink() {
+    const Url = window.location.href.replace(/\/(convert|file)\//, "/edit/");
+    window.open(Url, "_blank");
+  }
+
+  function openScriptHubLink() {
+    const scriptHubUrl = `http://script.hub/convert/_start_/${getRawUrl()}/_end_/plain.txt?type=plain-text&target=plain-text`;
+    window.open(scriptHubUrl, "_blank");
+  }
+})();
