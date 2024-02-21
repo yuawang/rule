@@ -3,7 +3,9 @@ var T=Date.now();(()=>{var e,t=Object.create,r=Object.defineProperty,i=Object.ge
 
 try {
   const getEnv = () => {
-    return "undefined" != typeof $environment && $environment["surge-version"]
+    return "undefined" != typeof Egern 
+      ? "Egern" 
+      : "undefined" != typeof $environment && $environment["surge-version"]
       ? "Surge"
       : "undefined" != typeof $environment && $environment["stash-version"]
       ? "Stash"
@@ -27,9 +29,12 @@ try {
       version: s[2],
       app: "Loon",
     };
+  } else if (ios == "Egern") {
+    ios = Egern
+    ios['app'] = "Egern"
   } else if (ios == "Surge") {
     ios = $environment
-    ios['app'] = "Surge"
+    ios['app'] = "Surge";
   } else if (ios == "Stash") {
     ios = {
       system: $environment.system,
