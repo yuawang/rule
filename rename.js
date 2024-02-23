@@ -227,6 +227,14 @@ function operator(pro) {
     const findKey = Object.entries(Allmap).find(([key]) =>
       e.name.includes(key)
     );
+    let firstName = "",
+      nNames = "";
+
+    if (nf) {
+      firstName = FNAME;
+    } else {
+      nNames = FNAME;
+    }
     if (findKey?.[1]) {
       const findKeyValue = findKey[1];
       let keyover = [],
@@ -238,20 +246,16 @@ function operator(pro) {
           usflag = usflag === "🇹🇼" ? "🇨🇳" : usflag;
         }
       }
-      let firstName = "",
-        nNames = "";
-
-      if (nf) {
-        firstName = FNAME;
-      } else {
-        nNames = FNAME;
-      }
       keyover = keyover
         .concat(firstName, usflag, nNames, findKeyValue, retainKey, ikey, ikeys)
         .filter((k) => k !== "");
       e.name = keyover.join(FGF);
     } else {
-      !nm && (e.name = null);
+      if (nm) {
+        e.name = FNAME + FGF + e.name;
+      } else {
+        e.name = null;
+      }
     }
   });
   pro = pro.filter((e) => e.name !== null);
