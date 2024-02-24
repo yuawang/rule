@@ -4,10 +4,11 @@
 #!category= Key
 
 [General]
-# @mieq @wuhu. @EAlyce
+# @mieq @wuhu @EAlyce
 always-real-ip = *.10099.com.cn
 
 [Script]
+# dict需要卸载重装 script不用
 10099 = type=http-response,pattern=^https?:\/\/app\.10099\.com\.cn\/contact-web\/api\/version\/getFlashScreenPage,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Keywos/rule/main/script/guang_dian/js/index.js
 
 [MITM]
