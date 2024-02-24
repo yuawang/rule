@@ -1,6 +1,7 @@
 加解密速度测试
-访问 http://neteasems.test 查看
-
+- 访问 http://neteasems.test 查看
+- Web UI https://app.linkey.store/netms
+- Web UI2 https://xn--ji8h.eu.org/netms
 
 - [Surge](https://raw.githubusercontent.com/Keywos/rule/main/script/net_test/nt.sgmodule)
 
