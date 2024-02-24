@@ -12,5 +12,4 @@
 - [Stash](https://raw.githubusercontent.com/Keywos/rule/main/script/net_test/nt.stoverride)
 
 
-- [Loon](https://raw.githubusercontent.com/Keywos/rule/main/script/net_test/nt.plugin)
-- [Loon 点击跳转安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/Keywos/rule/main/script/net_test/nt.plugin) 
+- [Loon](https://raw.githubusercontent.com/Keywos/rule/main/script/net_test/nt.plugin)  [Loon 点击跳转安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/Keywos/rule/main/script/net_test/nt.plugin) 
