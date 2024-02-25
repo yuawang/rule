@@ -33,11 +33,13 @@ if (typeof $argument !== "undefined" && $argument !== "") {
       { enabled: rewrite },
       { enabled: scripting },
       { profile },
+      ScriptSG,
     ] = await Promise.all([
       httpAPI("/v1/features/mitm", "GET"),
       httpAPI("/v1/features/rewrite", "GET"),
       httpAPI("/v1/features/scripting", "GET"),
       httpAPI("/v1/profiles/current?sensitive=0", "GET"),
+      httpAPI("v1/scripting", "GET"),
     ]);
     let hostname =
       profile.match(/\nhostname\s*=\s*(.*?)\n/)?.[1].split(/\s*,\s*/) || [];
@@ -49,6 +51,10 @@ if (typeof $argument !== "undefined" && $argument !== "") {
 
     // prettier-ignore
     let DOMAIN_NUM=0,DOMAIN_SUFFIX_NUM=0,DOMAIN_KEYWORD_NUM=0,IP_CIDR_NUM=0,IP_CIDR6_NUM=0,IP_ASN_NUM=0,OR_NUM=0,AND_NUM=0,NOT_NUM=0,DEST_PORT_NUM=0,IN_PORT_NUM=0,SRC_IP_NUM=0,PROTOCOL_NUM=0,PROCESS_NAME_NUM=0,DEVICE_NAME_NUM=0,USER_AGENT_NUM=0,URL_REGEX_NUM=0,SUBNET_NUM=0,DOMAIN_SET_NUM=0,RULE_SET_NUM=0,ALL_NUM=0,ScriptNUM=0,URL_RewriteNUM=0,Map_LocalNUM=0,Header_RewriteNUM=0,RewriteNUM=0,hostnameNUM=0,AllRule=[],SurgeTool={},RULELISTALL={};
+
+    if (ScriptSG.scripts) {
+      ScriptNUM = ScriptSG.scripts.filter((i) => i.enabled)?.length;
+    }
     if (isFetch || isPanel) {
       const scRuleRaw =
         profile.match(/^\[Rule\]([\s\S]+?)^\[/gm)?.[0].split("\n") || [];
@@ -230,28 +236,70 @@ if (typeof $argument !== "undefined" && $argument !== "") {
           }
         }
       }
+
       AllRule.forEach((e) => {
         ALL_NUM++;
-        /^DOMAIN,/.test(e) && DOMAIN_NUM++;
-        /^DOMAIN-SUFFIX,/.test(e) && DOMAIN_SUFFIX_NUM++;
-        /^DOMAIN-KEYWORD,/.test(e) && DOMAIN_KEYWORD_NUM++;
-        /^IP-CIDR6,/.test(e) && IP_CIDR6_NUM++;
-        /^IP-CIDR,/.test(e) && IP_CIDR_NUM++;
-        /^IP-ASN,/.test(e) && IP_ASN_NUM++;
-        /^OR,/.test(e) && OR_NUM++;
-        /^AND,/.test(e) && AND_NUM++;
-        /^NOT,/.test(e) && NOT_NUM++;
-        /^DEST-PORT,/.test(e) && DEST_PORT_NUM++;
-        /^IN-PORT,/.test(e) && IN_PORT_NUM++;
-        /^SRC-IP,/.test(e) && SRC_IP_NUM++;
-        /^PROTOCOL,/.test(e) && PROTOCOL_NUM++;
-        /^PROCESS-NAME,/.test(e) && PROCESS_NAME_NUM++;
-        /^DEVICE-NAME,/.test(e) && DEVICE_NAME_NUM++;
-        /^USER-AGENT,/.test(e) && USER_AGENT_NUM++;
-        /^URL-REGEX,/.test(e) && URL_REGEX_NUM++;
-        /^SUBNET,/.test(e) && SUBNET_NUM++;
+        switch (e.split(",")[0]) {
+          case "DOMAIN":
+            DOMAIN_NUM++;
+            break;
+          case "DOMAIN-SUFFIX":
+            DOMAIN_SUFFIX_NUM++;
+            break;
+          case "DOMAIN-KEYWORD":
+            DOMAIN_KEYWORD_NUM++;
+            break;
+          case "IP-CIDR6":
+            IP_CIDR6_NUM++;
+            break;
+          case "IP-CIDR":
+            IP_CIDR_NUM++;
+            break;
+          case "IP-ASN":
+            IP_ASN_NUM++;
+            break;
+          case "OR":
+            OR_NUM++;
+            break;
+          case "AND":
+            AND_NUM++;
+            break;
+          case "NOT":
+            NOT_NUM++;
+            break;
+          case "DEST-PORT":
+            DEST_PORT_NUM++;
+            break;
+          case "IN-PORT":
+            IN_PORT_NUM++;
+            break;
+          case "SRC-IP":
+            SRC_IP_NUM++;
+            break;
+          case "PROTOCOL":
+            PROTOCOL_NUM++;
+            break;
+          case "PROCESS-NAME":
+            PROCESS_NAME_NUM++;
+            break;
+          case "DEVICE-NAME":
+            DEVICE_NAME_NUM++;
+            break;
+          case "USER-AGENT":
+            USER_AGENT_NUM++;
+            break;
+          case "URL-REGEX":
+            URL_REGEX_NUM++;
+            break;
+          case "SUBNET":
+            SUBNET_NUM++;
+            break;
+          default:
+            break;
+        }
       });
     } // get
+
     try {
       Header_RewriteNUM =
         profile
@@ -268,16 +316,7 @@ if (typeof $argument !== "undefined" && $argument !== "") {
           .match(/^\[URL Rewrite\]([\s\S]+?)^\[/gm)?.[0]
           .split("\n")
           .filter((i) => /^\s?(?![#;\s[//])./.test(i)).length || 0;
-      ScriptNUM =
-        profile
-          .match(/^\[Script\]([\s\S]+?)^\[/gm)?.[0]
-          .split("\n")
-          .filter((i) => /^\s?(?![#;\s[//])./.test(i)).length || 0;
-      ScriptNUM =
-        profile
-          .match(/^\[Script\]([\s\S]+?)^\[/gm)?.[0]
-          .split("\n")
-          .filter((i) => /^\s?(?![#;\s[//])./.test(i)).length || 0;
+      // ScriptNUM =profile.match(/^\[Script\]([\s\S]+?)^\[/gm)?.[0].split("\n").filter((i) => /^\s?(?![#;\s[//])./.test(i)).length || 0;
     } catch (e) {
       console.log(e.message);
     }
@@ -318,6 +357,7 @@ if (typeof $argument !== "undefined" && $argument !== "") {
               SC: scripting,
               UPDATA: UPDATA,
               TIMESTAMP: nowt,
+              ETIMESTAMP: Date.now(),
               AROBJ: AROBJ,
               HOSTNAME: hostname,
               RULELISTALL: RULELISTALL,
