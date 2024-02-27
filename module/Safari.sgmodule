@@ -47,7 +47,6 @@
 ^https:\/\/duckduckgo.com\/\?q=sg\+([^&]+).+ https://sogou.com/web?query=$1 302
 
 
-
 # cn (App Store 临时换至中国区)
 ^https:\/\/duckduckgo.com\/\?q=cn&.+ https://itunes.apple.com/WebObjects/MZStore.woa/wa/resetAndRedirect?dsf=143465&mt=8&url=/WebObjects/MZStore.woa/wa/viewSoftware?mt=8&id=1108187390&cc=cn&urlDesc= 302
 
