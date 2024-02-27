@@ -10,14 +10,22 @@ http:
     - "neteasems.test"
 
   script:
-
+    - match: ^https?:\/\/neteasems\.test\/binary
+      name: "加解密耗时二进制模式"
+      type: request
+      require-body: true
+      binary-mode: true
+      timeout: 50
     - match: ^https?:\/\/neteasems\.test
       name: "加解密耗时"
       type: request
       require-body: true
-      timeout: 300
+      timeout: 50
 
 script-providers:
   "加解密耗时":
     url: https://raw.githubusercontent.com/Keywos/rule/main/script/net_test/js/nt.js
+    interval: 86400
+  "加解密耗时二进制模式":
+    url: https://raw.githubusercontent.com/Keywos/rule/main/script/net_test/js/ntbm.js
     interval: 86400
