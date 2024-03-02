@@ -40,7 +40,8 @@ try {
       system: $environment.system,
       "stash-build": $environment["stash-build"],
       "stash-version": $environment["stash-version"],
-      app: "Stash"
+      "device-model": $environment["device-model"],
+      app: "Stash",
     }
   }
 
