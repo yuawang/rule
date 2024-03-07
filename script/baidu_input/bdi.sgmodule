@@ -7,11 +7,10 @@
 DOMAIN-SUFFIX,udpolimenew.baidu.com,REJECT,extended-matching
 
 [Map Local]
-
 # ▿▿ 模拟数据 避免反复请求
-^https?:\/\/mbd\.baidu\.com\/ccs\/v1\/start\/confsync\?appname=baidu_input data="https://raw.githubusercontent.com/Keywos/rule/main/script/baidu_input/mocks/bd.json"
+^https?:\/\/mbd\.baidu\.com\/ccs\/v1\/start\/confsync\?appname=baidu_input data="{"errno": 0,"logid": "3617169806","data": {"control": {},"service": {},"pubparam": {"bd_version": "12.2.4.16","device_ua": "iphone"}}}" data-type=text
 
-^https?:\/\/h2tcbox\.baidu\.com\/ data="https://raw.githubusercontent.com/Keywos/rule/main/script/baidu_input/mocks/ztbox.json"
+^https?:\/\/h2tcbox\.baidu\.com\/ data="{"error":"0","logid":"11276794627142432359"}" data-type=text
 
 ^https?:\/\/olimenew\.baidu\.com data-type=text data="{}"
 
