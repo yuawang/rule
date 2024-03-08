@@ -1,7 +1,7 @@
-#!name=百度输入法
-#!desc=净化 个人页随机图片
-#!system=ios
-#!category=Key
+#!name= 去广告 - 百度输入法
+#!desc= 净化 个人页随机图片
+#!system= ios
+#!category= Key
 
 [Rule]
 DOMAIN-SUFFIX,udpolimenew.baidu.com,REJECT,extended-matching

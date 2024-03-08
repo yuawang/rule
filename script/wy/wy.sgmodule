@@ -1,7 +1,7 @@
-#!name=网易云音乐 
-#!desc=全面净化
-#!system=ios
-#!category=Key
+#!name= 去广告 - 网易云音乐 
+#!desc= 全面净化
+#!system= ios
+#!category= Key
 #!arguments=ne_vip:#,ne_tab:ne_tab,ne_foll:#
 #!arguments-desc=# 改成任意名称即可开启对应脚本\n\nne_foll: 显示未关注你\nne_vip: 伪vip\nne_tab: 漫游
 #!date=2024-01-27 09:55:07
