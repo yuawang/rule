@@ -224,10 +224,10 @@ if (min !== "") {
 }
 let TIMEDKEY = $.read(EXPIRATION_KEY),inapi=0;
 async function operator(e = [], targetPlatform, env) {
-  let tzname = "", subcoll = "", x = false, xy = false;
+  let tzname = "", subcoll = "", x = false, xys = false;
   if (env?.source?.[e?.[0]?.subName]) x = true;
-  if (env?.source?._collection?.name) xy = true;
-  if (x && xy) {
+  if (env?.source?._collection?.name) xys = true;
+  if (x && xys) {
     tzname =
       env.source._collection.name + ": [" + env.source._collection.subscriptions + "]";
     subcoll = "组合订阅内单条订阅加了脚本, 输出组合订阅";
