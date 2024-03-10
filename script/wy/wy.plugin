@@ -2,7 +2,7 @@
 #!desc = 可自定 - 全面净化
 #!openUrl =
 #!author = @key
-#!homepage = https://github.com/Keywos
+#!homepage = https://github.com/Keywos/rule/blob/main/script/wy
 #!icon = https://raw.githubusercontent.com/Keywos/rule/main/tv/app/144px/Netease.png
 #https://raw.githubusercontent.com/LimeAroma/Loon/main/Plugin/NeteaseCloudMusic_remove_ads.plugin
 #!select = 网易云音乐首页卡片数量,1,2,3,4,5
