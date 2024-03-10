@@ -15,7 +15,7 @@ DOMAIN,iadmusicmat.music.126.net,REJECT
 DOMAIN,iadmat.nosdn.127.net,REJECT
 DOMAIN,iadmatapk.nosdn.127.net,REJECT
 DOMAIN,httpdns.n.netease.com,REJECT
-DOMAIN-SUFFIX,163jiasu.com,REJECT
+
 
 [Rewrite]
 ^https?:\/\/httpdns.n\.netease\.com - reject
