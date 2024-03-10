@@ -5,7 +5,8 @@
 - [Loon 点击跳转安装](https://www.nsloon.com/openloon/import?plugin=https://raw.githubusercontent.com/Keywos/rule/main/script/baidu_index/bd.plugin) 
 - [Loon](https://raw.githubusercontent.com/Keywos/rule/main/script/baidu_index/bd.plugin)
 - [Surge](https://raw.githubusercontent.com/Keywos/rule/main/script/baidu_index/bd.sgmodule)
-- [Surge 点击跳转安装](surge:///install-module?url=https://raw.githubusercontent.com/Keywos/rule/main/script/baidu_index/bd.sgmodule)
+- <a href="surge:///install-module?url=https://raw.githubusercontent.com/Keywos/rule/main/script/baidu_index/bd.sgmodule">Surge 点击跳转安装</a>
+
 <div align="center">
   <img src="img/w.PNG" alt="浅色" width="300px" style="margin-right: 6px;" />
   <img src="img/b.PNG" alt="深色" width="300px" />
