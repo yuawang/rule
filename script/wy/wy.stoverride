@@ -20,7 +20,6 @@ rules:
   - DOMAIN,iadmat.nosdn.127.net,REJECT
   - DOMAIN,iadmatapk.nosdn.127.net,REJECT
   - DOMAIN,httpdns.n.netease.com,REJECT
-  - DOMAIN-SUFFIX,163jiasu.com,REJECT
 
 http:
 
