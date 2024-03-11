@@ -15,7 +15,7 @@
 ne_mian = type=http-response,pattern=^https?:\/\/(ipv4|interface3?)\.music\.163\.com\/e?api\/(batch|v\d\/resource\/comment\/floor\/get),requires-body=1,max-size=0,timeout=20,binary-body-mode=1,script-path=https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js
 
 # 伪vip
-{{{伪vip}}} = type=http-response,pattern=^https?:\/\/(ipv4|interface3?)\.music\.163\.com\/e?api\/(music-vip-membership\/client\/vip\/info|vipauth\/app\/auth\/recycle|vipnewcenter\/app\/resource\/newaccountpage),requires-body=1,max-size=0,timeout=20,binary-body-mode=1,script-path=https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js
+{{{伪vip}}} = type=http-response,pattern=^https?:\/\/(ipv4|interface3?)\.music\.163\.com\/e?api\/(music-vip-membership\/client\/vip\/info|vipnewcenter\/app\/resource\/newaccountpage),requires-body=1,max-size=0,timeout=20,binary-body-mode=1,script-path=https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js
 
 # tab
 ne_tab = type=http-response,pattern=^https?:\/\/(ipv4|interface3?)\.music\.163\.com\/e?api\/link\/home\/framework\/tab,requires-body=1,max-size=0,timeout=20,binary-body-mode=1,script-path=https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, argument="{"MY":"{{{漫游}}}","DT":"{{{动态}}}","TJ":"{{{推荐}}}","FX":"{{{发现}}}"}"
