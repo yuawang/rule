@@ -11,7 +11,10 @@ if (isLoon) {
   banner = $persistentStore.read("去除整个轮播图") === "开启";
   tops = $persistentStore.read("去除置顶") === "开启";
 } else if (typeof $argument !== "undefined" && $argument !== "") {
-  const ins = getin("$argument");
+  let ins = {};
+  try {
+    ins = JSON.parse($argument);
+  } catch (e) {}
   bannerAd = ins.bannerAd != 0;
   banner = ins.banner != 0;
   tops = ins.top != 0;
@@ -39,10 +42,10 @@ if (/api\/douyin\/GetLiveInfo/.test(url)) {
   }
   banner && FeedTypes.push(10002); //轮播
   tops && FeedTypes.push(10003); //置顶
-  i.data.list = i.data.list.filter((item) => {
+  i.data.list = i.data.list.filter((i) => {
     return (
-      !FeedTypes.includes(item.feedType) &&
-      !item.feedContent.smallTags?.[0].text.includes("广告")
+      !FeedTypes.includes(i.feedType) &&
+      !i.feedContent.smallTags?.[0]?.text?.includes("广告")
     );
   });
 }
@@ -50,4 +53,3 @@ $done({ body: JSON.stringify(i) });
 
 // prettier-ignore
 function getin() {return Object.fromEntries($argument.split("&").map((i) => i.split("=")).map(([k, v]) => [k, decodeURIComponent(v)]));}
-
