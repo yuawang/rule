@@ -3,7 +3,7 @@
 #!system= ios
 #!category= Key
 #!arguments= 伪vip:#,显示未关注你:#,首页卡片数量:3,推荐:1,发现:1,漫游:0,动态:0
-#!arguments-desc= 将 # 改成任意名称即可开启对应脚本\n\n首页卡片数量 可选值 1-5\n\nTAB:推荐、发现、漫游、动态: 隐藏为 0
+#!arguments-desc= 将 # 改成任意名称即可开启对应脚本\n\n首页卡片数量 可选值 1-6\n\nTAB:推荐、发现、漫游、动态: 隐藏为 0
 #!date= 2024-03-09 20:08:44
 #!icon= https://raw.githubusercontent.com/Keywos/rule/main/tv/app/144px/Netease.png
 #Thank RuCu6, kokoryh 
