@@ -11,17 +11,17 @@
 #!select = 隐藏推荐标签, 是, 否
 #!select = 隐藏发现标签, 是, 否
 #!select = 以下为首页卡片板块, --
-#!select = 隐藏问候语板块, 是, 否
-#!select = 隐藏每日推荐板块, 是, 否
-#!select = 隐藏推荐歌单板块, 是, 否
-#!select = 隐藏最近常听板块, 是, 否
-#!select = 隐藏音乐合伙人板块, 是, 否
-#!select = 隐藏雷达歌单板块, 是, 否
-#!select = 隐藏排行榜板块, 是, 否
-#!select = 隐藏推荐专属歌单板块, 是, 否
-#!select = 隐藏你的专属歌单板块, 是, 否
+#!select = 隐藏首页问候语, 是, 否
+#!select = 隐藏首页排行榜, 是, 否
+#!select = 隐藏首页每日推荐, 是, 否
+#!select = 隐藏首页推荐歌单, 是, 否
+#!select = 隐藏首页最近常听, 是, 否
+#!select = 隐藏首页雷达歌单, 是, 否
+#!select = 隐藏首页音乐合伙人, 是, 否
+#!select = 隐藏首页推荐专属歌单, 是, 否
+#!select = 隐藏首页你的专属歌单, 是, 否
 
-#!date = 2024-03-10 09:17:37
+#!date = 2024-03-13 17:59:58
 
 [MITM]
 hostname = interface.music.163.com, interface3.music.163.com, ipv4.music.163.com
