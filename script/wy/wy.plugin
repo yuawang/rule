@@ -5,11 +5,21 @@
 #!homepage = https://github.com/Keywos/rule/blob/main/script/wy
 #!icon = https://raw.githubusercontent.com/Keywos/rule/main/tv/app/144px/Netease.png
 #https://raw.githubusercontent.com/LimeAroma/Loon/main/Plugin/NeteaseCloudMusic_remove_ads.plugin
-#!select = 首页卡片数量, 1, 2, 3, 4, 5, 6
+
 #!select = 隐藏漫游标签, 是, 否
 #!select = 隐藏动态标签, 是, 否
 #!select = 隐藏推荐标签, 是, 否
 #!select = 隐藏发现标签, 是, 否
+#!select = 以下为首页卡片板块, 0
+#!select = 隐藏问候语板块, 是, 否
+#!select = 隐藏每日推荐板块, 是, 否
+#!select = 隐藏推荐歌单板块, 是, 否
+#!select = 隐藏最近常听板块, 是, 否
+#!select = 隐藏音乐合伙人板块, 是, 否
+#!select = 隐藏雷达歌单板块, 是, 否
+#!select = 隐藏排行榜板块, 是, 否
+#!select = 隐藏推荐专属歌单板块, 是, 否
+#!select = 隐藏你的专属歌单板块, 是, 否
 
 #!date = 2024-03-10 09:17:37
 
@@ -21,7 +31,6 @@ DOMAIN,iadmusicmat.music.126.net,REJECT
 DOMAIN,iadmat.nosdn.127.net,REJECT
 DOMAIN,iadmatapk.nosdn.127.net,REJECT
 DOMAIN,httpdns.n.netease.com,REJECT
-
 
 [Rewrite]
 ^https?:\/\/httpdns.n\.netease\.com - reject
