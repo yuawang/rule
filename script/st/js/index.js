@@ -1,8 +1,8 @@
 // @xream @key
-const UPDATA = "2024-01-27 10:05:06";
+const UPDATA = "2024-03-16 14:14:49";
 const isPanel = typeof $input != "undefined",
   stname = "SurgeTool_Rule_NUM",
-  STversion = "5.10.02",
+  STversion = "5.10.03",
   nowt = Date.now();
 let url = (typeof $request !== "undefined" && $request.url) || 0,
   isFetch = /(trouble\.shoot|surge\.tool|st\.com)\/getkey/.test(url);
@@ -50,7 +50,7 @@ if (typeof $argument !== "undefined" && $argument !== "") {
     hostname = hostname.filter((item) => !hostname_disabled.includes(item));
 
     // prettier-ignore
-    let DOMAIN_NUM=0,DOMAIN_SUFFIX_NUM=0,DOMAIN_KEYWORD_NUM=0,IP_CIDR_NUM=0,IP_CIDR6_NUM=0,IP_ASN_NUM=0,OR_NUM=0,AND_NUM=0,NOT_NUM=0,DEST_PORT_NUM=0,IN_PORT_NUM=0,SRC_IP_NUM=0,PROTOCOL_NUM=0,PROCESS_NAME_NUM=0,DEVICE_NAME_NUM=0,USER_AGENT_NUM=0,URL_REGEX_NUM=0,SUBNET_NUM=0,DOMAIN_SET_NUM=0,RULE_SET_NUM=0,ALL_NUM=0,ScriptNUM=0,URL_RewriteNUM=0,Map_LocalNUM=0,Header_RewriteNUM=0,Body_RewriteNUM=0,RewriteNUM=0,hostnameNUM=0,AllRule=[],SurgeTool={},RULELISTALL={};
+    let DOMAIN_SET_NUM=0,RULE_SET_NUM=0,ALL_NUM=0,ScriptNUM=0,URL_RewriteNUM=0,Map_LocalNUM=0,Header_RewriteNUM=0,Body_RewriteNUM=0,RewriteNUM=0,hostnameNUM=0,AllRule=[],SurgeTool={},RULELISTALL={};
     ScriptNUM = scripts.filter((i) => i.enabled).length;
     if (isFetch || isPanel) {
       const scRuleRaw =
@@ -233,103 +233,29 @@ if (typeof $argument !== "undefined" && $argument !== "") {
           }
         }
       }
-
-      AllRule.forEach((e) => {
-        ALL_NUM++;
-        switch (e.split(",")[0]) {
-          case "DOMAIN":
-            DOMAIN_NUM++;
-            break;
-          case "DOMAIN-SUFFIX":
-            DOMAIN_SUFFIX_NUM++;
-            break;
-          case "DOMAIN-KEYWORD":
-            DOMAIN_KEYWORD_NUM++;
-            break;
-          case "IP-CIDR6":
-            IP_CIDR6_NUM++;
-            break;
-          case "IP-CIDR":
-            IP_CIDR_NUM++;
-            break;
-          case "IP-ASN":
-            IP_ASN_NUM++;
-            break;
-          case "OR":
-            OR_NUM++;
-            break;
-          case "AND":
-            AND_NUM++;
-            break;
-          case "NOT":
-            NOT_NUM++;
-            break;
-          case "DEST-PORT":
-            DEST_PORT_NUM++;
-            break;
-          case "IN-PORT":
-            IN_PORT_NUM++;
-            break;
-          case "SRC-IP":
-            SRC_IP_NUM++;
-            break;
-          case "PROTOCOL":
-            PROTOCOL_NUM++;
-            break;
-          case "PROCESS-NAME":
-            PROCESS_NAME_NUM++;
-            break;
-          case "DEVICE-NAME":
-            DEVICE_NAME_NUM++;
-            break;
-          case "USER-AGENT":
-            USER_AGENT_NUM++;
-            break;
-          case "URL-REGEX":
-            URL_REGEX_NUM++;
-            break;
-          case "SUBNET":
-            SUBNET_NUM++;
-            break;
-          default:
-            break;
-        }
-      });
     } // get
 
-    try {
-      Header_RewriteNUM =
-        profile
-          .match(/^\[Header Rewrite\]([\s\S]+?)^\[/gm)?.[0]
-          .split("\n")
-          .filter((i) => /^\s?(?![#;\s[//])./.test(i)).length || 0;
-      Body_RewriteNUM =
-        profile
-          .match(/^\[Body Rewrite\]([\s\S]+?)^\[/gm)?.[0]
-          .split("\n")
-          .filter((i) => /^\s?(?![#;\s[//])./.test(i)).length || 0;
-      Map_LocalNUM =
-        profile
-          .match(/^\[Map Local\]([\s\S]+?)^\[/gm)?.[0]
-          .split("\n")
-          .filter((i) => /^\s?(?![#;\s[//])./.test(i)).length || 0;
-      URL_RewriteNUM =
-        profile
-          .match(/^\[URL Rewrite\]([\s\S]+?)^\[/gm)?.[0]
-          .split("\n")
-          .filter((i) => /^\s?(?![#;\s[//])./.test(i)).length || 0;
-      // ScriptNUM =profile.match(/^\[Script\]([\s\S]+?)^\[/gm)?.[0].split("\n").filter((i) => /^\s?(?![#;\s[//])./.test(i)).length || 0;
-    } catch (e) {
-      console.log(e.message);
-    }
+    Header_RewriteNUM = countREN(profile, "Header Rewrite");
+    Body_RewriteNUM = countREN(profile, "Body Rewrite");
+    Map_LocalNUM = countREN(profile, "Map Local");
+    URL_RewriteNUM = countREN(profile, "URL Rewrite");
 
     RewriteNUM =
       Header_RewriteNUM + Body_RewriteNUM + Map_LocalNUM + URL_RewriteNUM;
     RewriteNUM = RewriteNUM > 0 ? `:${RewriteNUM}` : "";
     ScriptNUM = ScriptNUM > 0 ? `:${ScriptNUM}` : "";
     hostnameNUM = hostname.length > 0 ? `:${hostname.length}` : "";
+
     // prettier-ignore
-    const AROBJ = { OR:OR_NUM, AND:AND_NUM, NOT:NOT_NUM, SRC_IP:SRC_IP_NUM, IP_ASN:IP_ASN_NUM, DOMAIN:DOMAIN_NUM, SUBNET:SUBNET_NUM, IN_PORT:IN_PORT_NUM, IP_CIDR:IP_CIDR_NUM, RULE_SET:RULE_SET_NUM, IP_CIDR6:IP_CIDR6_NUM, PROTOCOL:PROTOCOL_NUM, DEST_PORT:DEST_PORT_NUM, URL_REGEX:URL_REGEX_NUM, DOMAIN_SET:DOMAIN_SET_NUM, USER_AGENT:USER_AGENT_NUM, DEVICE_NAME:DEVICE_NAME_NUM, PROCESS_NAME:PROCESS_NAME_NUM, DOMAIN_SUFFIX:DOMAIN_SUFFIX_NUM, DOMAIN_KEYWORD:DOMAIN_KEYWORD_NUM, };
+    const AROBJ={OR:0,AND:0,NOT:0,DOMAIN:0,SUBNET:0,PROTOCOL:0,"SRC-IP":0,"IP-ASN":0,"IN-PORT":0,"IP-CIDR":0,"RULE-SET":0,"IP-CIDR6":0,"DEST-PORT":0,"URL-REGEX":0,"DOMAIN-SET":0,"USER-AGENT":0,"DEVICE-NAME":0,"PROCESS-NAME":0,"DOMAIN-SUFFIX":0,"DOMAIN-KEYWORD":0,};
+
+    AllRule.forEach((e) => {
+      ALL_NUM++;
+      const type = e.split(",")[0];
+      if (AROBJ.hasOwnProperty(type)) {
+        AROBJ[type]++;
+      }
+    });
 
     if (LogTF) {
       Object.entries(AROBJ).forEach(
@@ -465,6 +391,14 @@ setTimeout(() =>{ fetch("https://surge.tool/getkey") .then((response) => respons
   })
   .finally(() => $done(result));
 
+function countREN(profile, sectionName) {
+  return (
+    profile
+      .match(new RegExp(`^\\[${sectionName}\\]([\\s\\S]+?)^\\[`, "gm"))?.[0]
+      .split("\n")
+      .filter((i) => /^\s?(?![#;\s[//])./.test(i)).length || 0
+  );
+}
 // prettier-ignore
 function httpAPI(path = "", method = "POST", body = null) {return new Promise((resolve) => {$httpAPI(method, path, body, (result) => {resolve(result);});});}
 // prettier-ignore
