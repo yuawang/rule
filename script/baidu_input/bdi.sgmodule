@@ -14,6 +14,8 @@ DOMAIN-SUFFIX,udpolimenew.baidu.com,REJECT,extended-matching
 
 ^https?:\/\/olimenew\.baidu\.com data-type=text data="{}"
 
+^https?:\/\/mime\.baidu\.com\/v5\/ss\/list data-type=text data="[]"
+
 # 百度输入法开屏
 ^https?:\/\/mime\.baidu\.com\/v5\/start_screen_ads/list data-type=text data="{}"
 
