@@ -132,6 +132,12 @@ const rurekey = {
   Esnc: /esnc/gi,
 };
 
+let GetK = false, AMK = []
+function ObjKA(i) {
+  GetK = true
+  AMK = Object.entries(i)
+}
+
 function operator(pro) {
   const Allmap = {};
   const outList = getList(outputName);
@@ -221,10 +227,12 @@ function operator(pro) {
       }
     }
 
+    !GetK && ObjKA(Allmap)
     // 匹配 Allkey 地区
-    const findKey = Object.entries(Allmap).find(([key]) =>
+    const findKey = AMK.find(([key]) =>
       e.name.includes(key)
-    );
+    )
+    
     let firstName = "",
       nNames = "";
 
