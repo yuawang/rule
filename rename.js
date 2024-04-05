@@ -208,7 +208,7 @@ function operator(pro) {
     }
 
     // 自定义
-    if (bktf && BLKEY) {
+    if (!bktf && BLKEY) {
       let BLKEY_REPLACE = "",
         re = false;
       BLKEYS.forEach((i) => {
