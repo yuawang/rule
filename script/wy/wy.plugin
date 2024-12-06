@@ -10,6 +10,16 @@
 
 
 [Argument]
+
+Cookie: 
+ntes_kaola_ad=1; EVNSM=1.0.0; NMCID=odtfxl.169; NMDI=WyioE%3D; URS_APPID=0B172; appkey=WWul9fT; appver=9.0.40; buildver=4796; caid={"lastIyunId":"0c8","iyunId":"1fbaa","iyunVersion":"20230330","lastIyunVersion":"20220111"}; channel=distribution; deviceId=c7a1f; idfa=0000; idfv=E1EAF62; machineid=iPhone13.3; os=iPhone OS; osver=15.1.1; packageType=release; sDeviceId=c5ec8c63a2; JSESSIONID-WYYY=60%3; __csrf=99b; NMTID=OCNP6Yw; __csrf=99b; MUSIC_U=6D6B2DD1E57C480C638; _ntes_nnid=cfce43; _ntes_nuid=453
+ 
+MConfig-Info: 
+{"zr4bw":{"version":96,"appver":"9.0.40"},"tPJJ":{"version":08,"appver":"2.0.30"},"c0Ve":{"version":16,"appver":"1.7.50"},"IuRPV":{"version":832,"appver":"9.0.40"}}
+ 
+User-Agent: 
+NeteaseMusic 9.0.40/4796 (iPhone; iOS 15.1.1; zh_CN)
+
 MY = switch,true,tag=[隐藏底部]漫游标签,desc=
 DT = switch,false,tag=[隐藏底部]笔记标签,desc=
 FX = switch,true,tag=[隐藏底部]发现标签,desc=
