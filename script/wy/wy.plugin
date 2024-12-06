@@ -1,8 +1,8 @@
 
-#!name = 去广告 - 网易云音乐
+#!name = wyy by yua
 #!desc = 可自定 - 全面净化
 #!openUrl =
-#!author = @key
+#!author = @yua
 #!homepage = https://github.com/Keywos/rule/blob/main/script/wy
 #!icon = https://raw.githubusercontent.com/Keywos/rule/main/tv/app/144px/Netease.png
 #https://raw.githubusercontent.com/LimeAroma/Loon/main/Plugin/NeteaseCloudMusic_remove_ads.plugin
